@@ -14,6 +14,7 @@ host = 'http://localhost/'
 filesFounds = []
 bkpOldFiles = ['.bkp', '.bak', '.src', '.dev', '.txt', '.old', '.inc', '.orig', '.copy', '.tmp']
 
+# initial server recognition
 def recon(host):
     r = requests.get(host)
     r = r.headers
@@ -46,17 +47,27 @@ def main():
 
             url = host+page
             r = requests.get(url)
-            r = r.status_code
 
-            if r == 200:
+            codeHttp = r.status_code
+
+            # searching files
+            if codeHttp == 200:
                 print("File found:", url)
                 bocf(url)
 
-#main()
+            # searching directories
+            history = r.history
+            if len(history) > 0:
+                history = str(r.history[0])
+                historyHttp = history[11:14]
+                print('Directory Found', url)
 
-'''
-r = requests.get('http://localhost')
-r = r.
+main()
 
-print(r)
+
+'''r = requests.get('http://localhost/js')
+s = r.history
+print(s,'\n\n')
 '''
+
+
