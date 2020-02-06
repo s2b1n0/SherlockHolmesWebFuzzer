@@ -12,6 +12,7 @@ if argExist == True:
 '''
 host = 'http://localhost/'
 filesFounds = []
+directoriesFounds = []
 bkpOldFiles = ['.bkp', '.bak', '.src', '.dev', '.txt', '.old', '.inc', '.orig', '.copy', '.tmp']
 
 # initial server recognition
@@ -35,22 +36,35 @@ def bocf(url):
 def windowsCopyFile():
     print('TODO')
 
-def main():
-    recon(host)
-
+def fileSearching(directory):
     with open("/var/www/html/common.txt.bkp") as file:
         archive = file.readlines()
+
+        countLine = 0
+        # count lines
+        for line in archive:
+            countLine += 1
+
+        countExecuted = 0
+        # searching files
         for word in archive:
 
-            page = word.replace(" ","")
+            # lines executed
+
+            countExecuted += 1
+
+            page = word.replace(" ", "")
             page = page.replace("\n", "")
 
-            url = host+page
+            if directory != 'null':
+                 url = host + directory + '/' + page
+            else:
+                url = host + page
+
             r = requests.get(url)
 
             codeHttp = r.status_code
 
-            # searching files
             if codeHttp == 200:
                 print("File found:", url)
                 bocf(url)
@@ -58,11 +72,43 @@ def main():
             # searching directories
             history = r.history
             if len(history) > 0:
-                history = str(r.history[0])
-                historyHttp = history[11:14]
+                #history = str(r.history[0])
+                #historyHttp = history[11:14]
                 print('Directory Found', url)
 
-main()
+                # todo se page contiver caracter
+                directoriesFounds.append(page)
+                print(directoriesFounds)
+
+            if countLine == countExecuted:
+                directorySearching(directoriesFounds)
+
+def directorySearching(directoriesFounds):
+
+    while len(directoriesFounds) >= 1:
+
+        print(directoriesFounds)
+
+        directory = directoriesFounds[0]
+        directoriesFounds.remove(directory)
+        print('Entring in directory:', directory)
+        print(directoriesFounds)
+        fileSearching(directory)
+
+
+def main(host, directory):
+    recon(host)
+
+    if directory == '':
+        fileSearching(directory)
+    else:
+        fileSearching(directory)
+
+
+main(host, 'null')
+
+
+
 
 
 '''r = requests.get('http://localhost/js')
