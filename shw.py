@@ -1,10 +1,11 @@
 import requests
 import sys
 
-if len(sys.argv) > 1:
+if len(sys.argv) > 2:
     argExist = True
 
     host = sys.argv[1]
+    wordlist = sys.argv[2]
     filesFounds = []
     directoriesFounds = []
     bkpOldFiles = ['.bkp', '.bak', '.src', '.dev', '.txt', '.old', '.inc', '.orig', '.copy', '.tmp']
@@ -35,7 +36,7 @@ if len(sys.argv) > 1:
 
 
     def fileSearching(directory):
-        with open("/var/www/html/common.txt.bkp") as file:
+        with open(wordlist) as file:
             archive = file.readlines()
 
             countLine = 0
@@ -106,4 +107,4 @@ if len(sys.argv) > 1:
     main(host, 'null')
 else:
     argExist = False
-    print('\nExecute: python3 shw.py <http/s://<host>/')
+    print('\nExecute: python3 shw.py <http/s://<host>/ <wordlist location>')
