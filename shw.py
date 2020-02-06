@@ -3,14 +3,11 @@ import sys
 
 try:
     if len(sys.argv) > 2:
-        argExist = True
-
         host = sys.argv[1]
         wordlist = sys.argv[2]
         filesFounds = []
         directoriesFounds = []
         bkpOldFiles = ['.bkp', '.bak', '.src', '.dev', '.txt', '.old', '.inc', '.orig', '.copy', '.tmp']
-
 
         # initial server recognition
         def recon(host):
@@ -34,7 +31,6 @@ try:
 
         def windowsCopyFile():
             print('TODO')
-
 
         def fileSearching(directory):
             try:
@@ -98,7 +94,6 @@ try:
                 # print(directoriesFounds)
                 fileSearching(directory)
 
-
         def main(host, directory):
             recon(host)
 
@@ -107,10 +102,8 @@ try:
             else:
                 fileSearching(directory)
 
-
         main(host, 'null')
     else:
-        argExist = False
         print('\nExecute: python3 shw.py <http/s://<host>/ <wordlist location>')
 except:
     print('\nCancelled')
