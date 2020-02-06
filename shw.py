@@ -57,7 +57,7 @@ def fileSearching(directory):
             page = page.replace("\n", "")
 
             if directory != 'null':
-                 url = host + directory + '/' + page
+                 url = directory + page
             else:
                 url = host + page
 
@@ -77,8 +77,8 @@ def fileSearching(directory):
                 print('Directory Found', url)
 
                 # todo se page contiver caracter
-                directoriesFounds.append(page)
-                print(directoriesFounds)
+                directoriesFounds.append(url+'/')
+                #print(directoriesFounds)
 
             if countLine == countExecuted:
                 directorySearching(directoriesFounds)
@@ -87,12 +87,12 @@ def directorySearching(directoriesFounds):
 
     while len(directoriesFounds) >= 1:
 
-        print(directoriesFounds)
+        #print(directoriesFounds)
 
         directory = directoriesFounds[0]
         directoriesFounds.remove(directory)
         print('Entring in directory:', directory)
-        print(directoriesFounds)
+        #print(directoriesFounds)
         fileSearching(directory)
 
 
