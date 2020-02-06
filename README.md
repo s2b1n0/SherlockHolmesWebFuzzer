@@ -6,7 +6,7 @@ Sherlock Holmes is a web fuzzer focused on finding files hidden on web servers. 
 
 **How to use**
 
-> python3 shw.py <http/s://<host>/ <wordlist location>
+> python3 shw.py <http/s://\<host\>/ <wordlist location>
 
 
 **CONTRIBUTE**
