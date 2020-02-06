@@ -7,7 +7,7 @@
 
 **How to use**
 
-> python3 shw.py <http/s://\<host\>/ \<wordlist location\>
+> python3 shw.py <http://\<host\>/ \<wordlist location\>
 
 
 **Contribute**
