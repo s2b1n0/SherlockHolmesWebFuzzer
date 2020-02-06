@@ -11,4 +11,5 @@ Sherlock Holmes is a web fuzzer focused on finding files hidden on web servers. 
 
 
 **CONTRIBUTE**
+
 This software must be simple, useful, effective and free. So, feel free to collaborate with this project.
