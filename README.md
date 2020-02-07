@@ -14,6 +14,7 @@
 - [ ] Implement session options
 - [ ] implement windows files searching
 - [ ] improve identification service
+- [ ] implement shp.py - sherlock holmes parsing web, a generator of a custom wordlist
 
 **Contribute**
 
