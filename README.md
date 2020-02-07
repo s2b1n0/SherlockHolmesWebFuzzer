@@ -9,6 +9,11 @@
 
 > python3 shw.py <http://\<host\>/ \<wordlist location\>
 
+**Nexts updates**
+- [] Implement argparse
+- [] Implement session options
+- [] implement windows files searching
+- [] improve identification service
 
 **Contribute**
 
